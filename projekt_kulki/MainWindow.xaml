@@ -1,0 +1,128 @@
+﻿<Window x:Class="projekt_kulki.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:projekt_kulki"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <DockPanel Width="800" Background="#FFF0F0F0">
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Plik"/>
+            <MenuItem Header="Edycja"/>
+            <MenuItem Header="Widok"/>
+        </Menu>
+        <ToolBarTray DockPanel.Dock="Right" Width="60" Orientation="Vertical" >
+            <ToolBar Foreground="#FFF0F0F0">
+                <ToggleButton x:Name="addParticleButton" Height="45" Width="45" Tag="addParticle"  ToolTip="Add particle" Checked="toolButtonChecked" Unchecked="toolButtonUnchecked">
+                    <Image Source="C:\Users\baurb\Desktop\Bartlomiej_Baur\projekt_kulki\projekt_kulki\icons\plus-button.png" />
+                </ToggleButton>
+                <ToggleButton x:Name="removeParticleButton" Height="45" Width="45" Tag="removeParticle" ToolTip="Remove Particle" Checked="toolButtonChecked" Unchecked="toolButtonUnchecked">
+                    <Image Source="C:\Users\baurb\Desktop\Bartlomiej_Baur\projekt_kulki\projekt_kulki\icons\minus.png" />
+                </ToggleButton>
+                <ToggleButton x:Name="moveParticleButton" Height="45" Width="45" Tag="moveParticle" ToolTip="Move Particle" Checked="toolButtonChecked" Unchecked="toolButtonUnchecked">
+                    <Image Source="C:\Users\baurb\Desktop\Bartlomiej_Baur\projekt_kulki\projekt_kulki\icons\grab.png" />
+                </ToggleButton>
+                <ToggleButton x:Name="chooseParticleButton" Height="45" Width="45" Tag="chooseParticle" ToolTip="Choose Particle">
+                    <StackPanel>
+                        <Ellipse x:Name="mainParticlePicture" Width="40" Height="40">
+                            <Ellipse.Fill>
+                                <RadialGradientBrush>
+                                    <GradientStop Color="Black" Offset="1"/>
+                                    <GradientStop Color="White" Offset="0.058"/>
+                                    <GradientStop Color="Red" Offset="0.467"/>
+                                </RadialGradientBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+
+                        <Popup Name="avaiableParticlesPopup" IsOpen="{Binding IsChecked, ElementName=chooseParticleButton}">
+                            <Border BorderThickness="1">
+                                <Grid x:Name="blueParticle">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Button x:Name="redParticleButton" Tag="red" Grid.Row="0" Grid.Column="0" Click="chooseParticleButton_Click" >
+                                        <Ellipse Width="40" Height="40">
+                                            <Ellipse.Fill>
+                                                <RadialGradientBrush>
+                                                    <GradientStop Color="Black" Offset="1"/>
+                                                    <GradientStop Color="White" Offset="0.058"/>
+                                                    <GradientStop Color="Red" Offset="0.467"/>
+                                                </RadialGradientBrush>
+                                            </Ellipse.Fill>
+                                        </Ellipse>
+                                    </Button>
+                                    <Button x:Name="blueParticleButton" Tag="blue" Grid.Row="0" Grid.Column="1" Click="chooseParticleButton_Click">
+                                        <Ellipse Width="40" Height="40">
+                                            <Ellipse.Fill>
+                                                <RadialGradientBrush>
+                                                    <GradientStop Color="Black" Offset="1"/>
+                                                    <GradientStop Color="White" Offset="0.058"/>
+                                                    <GradientStop Color="Blue" Offset="0.467"/>
+                                                </RadialGradientBrush>
+                                            </Ellipse.Fill>
+                                        </Ellipse>
+                                    </Button>
+                                    <Button x:Name="greenParticleButton" Tag="green" Grid.Row="0" Grid.Column="2" Click="chooseParticleButton_Click">
+                                        <Ellipse Width="40" Height="40">
+                                            <Ellipse.Fill>
+                                                <RadialGradientBrush>
+                                                    <GradientStop Color="Black" Offset="1"/>
+                                                    <GradientStop Color="White" Offset="0.058"/>
+                                                    <GradientStop Color="Green" Offset="0.467"/>
+                                                </RadialGradientBrush>
+                                            </Ellipse.Fill>
+                                        </Ellipse>
+                                    </Button>
+
+                                    <Button x:Name="yellowParticleButton" Tag="yellow" Grid.Row="1" Grid.Column="0" Click="chooseParticleButton_Click">
+                                        <Ellipse Width="40" Height="40">
+                                            <Ellipse.Fill>
+                                                <RadialGradientBrush>
+                                                    <GradientStop Color="Black" Offset="1"/>
+                                                    <GradientStop Color="White" Offset="0.058"/>
+                                                    <GradientStop Color="Yellow" Offset="0.467"/>
+                                                </RadialGradientBrush>
+                                            </Ellipse.Fill>
+                                        </Ellipse>
+                                    </Button>
+                                    <Button x:Name="purpleParticleButton" Tag="purple" Grid.Row="1" Grid.Column="1" Click="chooseParticleButton_Click">
+                                        <Ellipse Width="40" Height="40">
+                                            <Ellipse.Fill>
+                                                <RadialGradientBrush>
+                                                    <GradientStop Color="Black" Offset="1"/>
+                                                    <GradientStop Color="White" Offset="0.058"/>
+                                                    <GradientStop Color="Purple" Offset="0.467"/>
+                                                </RadialGradientBrush>
+                                            </Ellipse.Fill>
+                                        </Ellipse>
+                                    </Button>
+                                    <Button x:Name="grayParticleButton" Tag="gray" Grid.Row="1" Grid.Column="2" Click="chooseParticleButton_Click">
+                                        <Ellipse Width="40" Height="40">
+                                            <Ellipse.Fill>
+                                                <RadialGradientBrush>
+                                                    <GradientStop Color="Black" Offset="1"/>
+                                                    <GradientStop Color="White" Offset="0.058"/>
+                                                    <GradientStop Color="Gray" Offset="0.467"/>
+                                                </RadialGradientBrush>
+                                            </Ellipse.Fill>
+                                        </Ellipse>
+                                    </Button>
+                                </Grid>
+                            </Border>
+                        </Popup>
+                    </StackPanel>
+                </ToggleButton>
+            </ToolBar>
+        </ToolBarTray>
+        <Canvas x:Name="playgroundCanvas" Background="#FF00319B" MouseLeftButtonDown="playgroundCanvas_MouseLeftButtonDown" PreviewMouseMove="playgroundCanvas_PreviewMouseMove" PreviewMouseLeftButtonUp="playgroundCanvas_PreviewMouseLeftButtonUp" Width="741">
+        </Canvas>
+    </DockPanel>
+</Window>
