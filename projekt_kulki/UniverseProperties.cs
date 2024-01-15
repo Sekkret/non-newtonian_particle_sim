@@ -4,15 +4,22 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Documents;
 using System.Windows.Media.Effects;
 
 namespace projekt_kulki
 {
     class UniverseProperties
     {
-        public static double[] mass = new double[6];
+        private static double[] mass = new double[6];
         // first index is particle affected, the second one is affecting
-        public static double[,] coefficients_matrix = new double[6, 6];
+        private static double[,] coefficients_matrix = new double[6, 6];
+        private static double[] mass_buffer = new double[6];
+        private static double[,] coefficients_buffer = new double[6, 6];
+
+        public static double frictionCoefficient {get; set;}
+        public static double timeStep { get; set;}
+        
 
         public UniverseProperties()
         {
@@ -20,6 +27,10 @@ namespace projekt_kulki
 
         public static void Load()
         {
+            //simple coefficients
+            frictionCoefficient = 0.01;
+            timeStep = 0.1;
+
             //masses declarations
             mass[(int) ParticleType.Red] = 1;
             mass[(int)ParticleType.Blue] = 1;
@@ -73,14 +84,37 @@ namespace projekt_kulki
 
         }
 
+        public static void Reload()
+        {
+            for(int i=0; i<6; i++)
+            {
+                for (int j=0;  j<6; j++)
+                {
+                    coefficients_matrix[i, j] = coefficients_buffer[i, j];
+                }
+            }
+            for(int i=0; i<6; i++)
+            {
+                mass[i] = mass_buffer[i];
+            }
+        }
+
         public static double getMass(ParticleType particleType)
         {
             return mass[(int) particleType];
+        }
+        public static void setMass(ParticleType particleType, double m)
+        {
+            mass_buffer[(int)particleType] = m;
         }
 
         public static double getCoefficient(ParticleType affected, ParticleType affecting)
         {
             return coefficients_matrix[(int)affected, (int)affecting];
+        }
+        public static void setCoefficient(ParticleType affected, ParticleType affecting, double value)
+        {
+            coefficients_buffer[(int)affected, (int)affecting] = value;
         }
     }
 }

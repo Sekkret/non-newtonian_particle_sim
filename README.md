@@ -8,5 +8,6 @@ In my program I use icons dowlnoaded from the Flaticon:
 https://www.flaticon.com/free-icons/add   - add icon created by Pixel perfect,
 https://www.flaticon.com/free-icons/minus - minus icon created by Pixel perfect,
 https://www.flaticon.com/free-icons/grab   - grab icon created by Kiranshastry.
+https://www.flaticon.com/free-icons/trash - trash icon created by Freepik 
 
  This work is licensed under CC BY-SA 4.0. Icons are not mine and are used under separate licence - see www.flaticon.com for more information.

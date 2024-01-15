@@ -33,7 +33,7 @@ namespace projekt_kulki
             List<Particle> particlesToRemove = new List<Particle>(); //necessary to handle exception
             foreach (var particle in Particles)
             {
-                // avoid errors of molecular dynamics
+                // avoid errors of molecular dynamics -- The Great Slow Down
                 if(particle.Velocity.Length() > 1000)
                 {
                     particle.Velocity = new Vector2(particle.Velocity.X / 100, particle.Velocity.Y / 100);
@@ -43,18 +43,18 @@ namespace projekt_kulki
                 {
                     if (particle != particle2)
                     {
-                        totalForce = Vector2.Add(  totalForce, Force.Ionic( particle.GetPosition(), particle2.GetPosition(), UniverseProperties.getCoefficient(particle.particleType, particle2.particleType) )  );
+                        totalForce = Vector2.Add(  totalForce, Force.Ionic_Safe( particle.GetPosition(), particle2.GetPosition(), UniverseProperties.getCoefficient(particle.particleType, particle2.particleType) )  );
                     }
                 }
                 totalForce = Vector2.Add(totalForce, Force.BorderForce(particle.GetPosition(), playgroundCanvas));
                 totalForce = Vector2.Add(totalForce, Force.Resistance(particle.Velocity));
-                particle.ApplyForce(totalForce, (float) 0.1);
+                particle.ApplyForce(totalForce, (float) UniverseProperties.timeStep);
             }
             foreach (var particle in Particles)
             {
                 try
                 {
-                    particle.Move((float) 0.1);
+                    particle.Move((float) UniverseProperties.timeStep);
                 }
                 catch (System.ArgumentException)
                 {
@@ -69,6 +69,7 @@ namespace projekt_kulki
             foreach (var particleToRemove in particlesToRemove)
             {
                 Particles.Remove(particleToRemove);
+                playgroundCanvas.Children.Remove(particleToRemove);
             }
             particlesToRemove.Clear();
         }
@@ -76,6 +77,14 @@ namespace projekt_kulki
         public void RemoveParticle(Particle clickedParticle)
         {
             Particles.Remove(clickedParticle);
+        }
+
+        public void RemoveAllParticles()
+        {
+            foreach (var particle in Particles) { 
+                playgroundCanvas.Children.Remove(particle);
+            }
+            Particles.Clear();
         }
     }
 }

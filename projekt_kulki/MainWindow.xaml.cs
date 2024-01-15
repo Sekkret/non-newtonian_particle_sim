@@ -204,5 +204,22 @@ namespace projekt_kulki
             }
             avaiableParticlesPopup.IsOpen = false;
         }
+
+        private void cleanButton_Click(object sender, RoutedEventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Czy jesteś pewien, że chcesz usunąć wszystkie cząsteczki?",
+                                     "Czy jesteś pewien?",
+                                     MessageBoxButton.YesNo);
+            if (confirmResult == MessageBoxResult.Yes)
+            {
+                particleManager.RemoveAllParticles();
+            }
+        }
+
+        private void settingsMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            SettingsWindow settingsWindow = new SettingsWindow();
+            settingsWindow.Show();
+        }
     }
 }

@@ -5,12 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:projekt_kulki"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Particle Sim" Height="450" Width="800">
     <DockPanel Width="800" Background="#FFF0F0F0">
         <Menu DockPanel.Dock="Top">
-            <MenuItem Header="Plik"/>
-            <MenuItem Header="Edycja"/>
-            <MenuItem Header="Widok"/>
+            <MenuItem Header="Simulation">
+                <MenuItem x:Name="settingsMenuItem" Header="Settings" Click="settingsMenuItem_Click"/>
+            </MenuItem>
+            <MenuItem Header="Tools"/>
+            <MenuItem Header="Help"/>
         </Menu>
         <ToolBarTray DockPanel.Dock="Right" Width="60" Orientation="Vertical" >
             <ToolBar Foreground="#FFF0F0F0">
@@ -120,6 +122,9 @@
                         </Popup>
                     </StackPanel>
                 </ToggleButton>
+                <Button x:Name="cleanButton" Height="45" Width="45" Tag="cleanPlayground" ToolTip="Remove all particles." Click="cleanButton_Click">
+                    <Image Source="C:\Users\baurb\Desktop\Bartlomiej_Baur\projekt_kulki\projekt_kulki\icons\trash.png" />
+                </Button>
             </ToolBar>
         </ToolBarTray>
         <Canvas x:Name="playgroundCanvas" Background="#FF00319B" MouseLeftButtonDown="playgroundCanvas_MouseLeftButtonDown" PreviewMouseMove="playgroundCanvas_PreviewMouseMove" PreviewMouseLeftButtonUp="playgroundCanvas_PreviewMouseLeftButtonUp" Width="741">
