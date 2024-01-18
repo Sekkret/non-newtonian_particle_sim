@@ -6,209 +6,239 @@
         xmlns:local="clr-namespace:projekt_kulki"
         mc:Ignorable="d"
         Title="Settings" Height="600" Width="600">
-    <TabControl>
-        <TabItem Header="Universe">
-        </TabItem>
-        <TabItem Header="Particles">
-            <DockPanel>
-                <Grid Background="#FFF0F0F0" DockPanel.Dock="Top">
-                    <Label Content="Below you can modify the coefficients with which particles affect each other and their masses."/>
-                </Grid>
-                <Grid Background="#FFF0F0F0" DockPanel.Dock="Bottom">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Button x:Name="applyButton" Content="Apply" Grid.Column="0" Click="applyButton_Click"/>
-                    <Button x:Name="okButton" Content="OK" Grid.Column="1" Click="okButton_Click"/>
-                    <Button x:Name="cancelButton" Content="Cancel" Grid.Column="2" Click="cancelButton_Click"/>
-                </Grid>
-                <Grid Background="#FFF0F0F0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="2*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Ellipse Width="40" Height="40" Grid.Column="1" Grid.Row="0">
-                        <Ellipse.Fill>
-                            <RadialGradientBrush>
-                                <GradientStop Color="Black" Offset="1"/>
-                                <GradientStop Color="White" Offset="0.058"/>
-                                <GradientStop Color="Red" Offset="0.467"/>
-                            </RadialGradientBrush>
-                        </Ellipse.Fill>
-                    </Ellipse>
-                    <Ellipse Width="40" Height="40" Grid.Column="2" Grid.Row="0">
-                        <Ellipse.Fill>
-                            <RadialGradientBrush>
-                                <GradientStop Color="Black" Offset="1"/>
-                                <GradientStop Color="White" Offset="0.058"/>
-                                <GradientStop Color="Blue" Offset="0.467"/>
-                            </RadialGradientBrush>
-                        </Ellipse.Fill>
-                    </Ellipse>
-                    <Ellipse Width="40" Height="40" Grid.Column="3" Grid.Row="0">
-                        <Ellipse.Fill>
-                            <RadialGradientBrush>
-                                <GradientStop Color="Black" Offset="1"/>
-                                <GradientStop Color="White" Offset="0.058"/>
-                                <GradientStop Color="Green" Offset="0.467"/>
-                            </RadialGradientBrush>
-                        </Ellipse.Fill>
-                    </Ellipse>
-                    <Ellipse Width="40" Height="40" Grid.Column="4" Grid.Row="0">
-                        <Ellipse.Fill>
-                            <RadialGradientBrush>
-                                <GradientStop Color="Black" Offset="1"/>
-                                <GradientStop Color="White" Offset="0.058"/>
-                                <GradientStop Color="Yellow" Offset="0.467"/>
-                            </RadialGradientBrush>
-                        </Ellipse.Fill>
-                    </Ellipse>
-                    <Ellipse Width="40" Height="40" Grid.Column="5" Grid.Row="0">
-                        <Ellipse.Fill>
-                            <RadialGradientBrush>
-                                <GradientStop Color="Black" Offset="1"/>
-                                <GradientStop Color="White" Offset="0.058"/>
-                                <GradientStop Color="Purple" Offset="0.467"/>
-                            </RadialGradientBrush>
-                        </Ellipse.Fill>
-                    </Ellipse>
-                    <Ellipse Width="40" Height="40" Grid.Column="6" Grid.Row="0">
-                        <Ellipse.Fill>
-                            <RadialGradientBrush>
-                                <GradientStop Color="Black" Offset="1"/>
-                                <GradientStop Color="White" Offset="0.058"/>
-                                <GradientStop Color="Gray" Offset="0.467"/>
-                            </RadialGradientBrush>
-                        </Ellipse.Fill>
-                    </Ellipse>
-                    <Ellipse Width="40" Height="40" Grid.Column="0" Grid.Row="1">
-                        <Ellipse.Fill>
-                            <RadialGradientBrush>
-                                <GradientStop Color="Black" Offset="1"/>
-                                <GradientStop Color="White" Offset="0.058"/>
-                                <GradientStop Color="Red" Offset="0.467"/>
-                            </RadialGradientBrush>
-                        </Ellipse.Fill>
-                    </Ellipse>
-                    <Ellipse Width="40" Height="40" Grid.Column="0" Grid.Row="2">
-                        <Ellipse.Fill>
-                            <RadialGradientBrush>
-                                <GradientStop Color="Black" Offset="1"/>
-                                <GradientStop Color="White" Offset="0.058"/>
-                                <GradientStop Color="Blue" Offset="0.467"/>
-                            </RadialGradientBrush>
-                        </Ellipse.Fill>
-                    </Ellipse>
-                    <Ellipse Width="40" Height="40" Grid.Column="0" Grid.Row="3">
-                        <Ellipse.Fill>
-                            <RadialGradientBrush>
-                                <GradientStop Color="Black" Offset="1"/>
-                                <GradientStop Color="White" Offset="0.058"/>
-                                <GradientStop Color="Green" Offset="0.467"/>
-                            </RadialGradientBrush>
-                        </Ellipse.Fill>
-                    </Ellipse>
-                    <Ellipse Width="40" Height="40" Grid.Column="0" Grid.Row="4">
-                        <Ellipse.Fill>
-                            <RadialGradientBrush>
-                                <GradientStop Color="Black" Offset="1"/>
-                                <GradientStop Color="White" Offset="0.058"/>
-                                <GradientStop Color="Yellow" Offset="0.467"/>
-                            </RadialGradientBrush>
-                        </Ellipse.Fill>
-                    </Ellipse>
-                    <Ellipse Width="40" Height="40" Grid.Column="0" Grid.Row="5">
-                        <Ellipse.Fill>
-                            <RadialGradientBrush>
-                                <GradientStop Color="Black" Offset="1"/>
-                                <GradientStop Color="White" Offset="0.058"/>
-                                <GradientStop Color="Purple" Offset="0.467"/>
-                            </RadialGradientBrush>
-                        </Ellipse.Fill>
-                    </Ellipse>
-                    <Ellipse Width="40" Height="40" Grid.Column="0" Grid.Row="6">
-                        <Ellipse.Fill>
-                            <RadialGradientBrush>
-                                <GradientStop Color="Black" Offset="1"/>
-                                <GradientStop Color="White" Offset="0.058"/>
-                                <GradientStop Color="Gray" Offset="0.467"/>
-                            </RadialGradientBrush>
-                        </Ellipse.Fill>
-                    </Ellipse>
-                    <TextBox x:Name="textBox11" Grid.Column="1" Grid.Row="1" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox21" Grid.Column="2" Grid.Row="1" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox31" Grid.Column="3" Grid.Row="1" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox41" Grid.Column="4" Grid.Row="1" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox51" Grid.Column="5" Grid.Row="1" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox61" Grid.Column="6" Grid.Row="1" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox12" Grid.Column="1" Grid.Row="2" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox22" Grid.Column="2" Grid.Row="2" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox32" Grid.Column="3" Grid.Row="2" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox42" Grid.Column="4" Grid.Row="2" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox52" Grid.Column="5" Grid.Row="2" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox62" Grid.Column="6" Grid.Row="2" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox13" Grid.Column="1" Grid.Row="3" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox23" Grid.Column="2" Grid.Row="3" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox33" Grid.Column="3" Grid.Row="3" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox43" Grid.Column="4" Grid.Row="3" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox53" Grid.Column="5" Grid.Row="3" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox63" Grid.Column="6" Grid.Row="3" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox14" Grid.Column="1" Grid.Row="4" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox24" Grid.Column="2" Grid.Row="4" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox34" Grid.Column="3" Grid.Row="4" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox44" Grid.Column="4" Grid.Row="4" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox54" Grid.Column="5" Grid.Row="4" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox64" Grid.Column="6" Grid.Row="4" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox15" Grid.Column="1" Grid.Row="5" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox25" Grid.Column="2" Grid.Row="5" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox35" Grid.Column="3" Grid.Row="5" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox45" Grid.Column="4" Grid.Row="5" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox55" Grid.Column="5" Grid.Row="5" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox65" Grid.Column="6" Grid.Row="5" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox16" Grid.Column="1" Grid.Row="6" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox26" Grid.Column="2" Grid.Row="6" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox36" Grid.Column="3" Grid.Row="6" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox46" Grid.Column="4" Grid.Row="6" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox56" Grid.Column="5" Grid.Row="6" Margin="10,28,10,28" />
-                    <TextBox x:Name="textBox66" Grid.Column="6" Grid.Row="6" Margin="10,28,10,28" />
-                    <Label Content="Affecting->;" HorizontalAlignment="Center" VerticalAlignment="Top" Width="71" Margin="0,-1,0,0" />
-                    <Label Content="Affected" HorizontalAlignment="Right" Margin="0,50,16,0" VerticalAlignment="Top" Width="55"/>
-                    <Label Content="->" HorizontalAlignment="Left" Margin="45,51,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2">
-                        <Label.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform Angle="91.44"/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </Label.RenderTransform>
-                    </Label>
-                    <Label Grid.Column="7" Content="Mass" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <TextBox x:Name="textBoxMass1" Grid.Column="7" Grid.Row="1" Margin="40,28,40,28" />
-                    <TextBox x:Name="textBoxMass2" Grid.Column="7" Grid.Row="2" Margin="40,28,40,28" />
-                    <TextBox x:Name="textBoxMass3" Grid.Column="7" Grid.Row="3" Margin="40,28,40,28" />
-                    <TextBox x:Name="textBoxMass4" Grid.Column="7" Grid.Row="4" Margin="40,28,40,28" />
-                    <TextBox x:Name="textBoxMass5" Grid.Column="7" Grid.Row="5" Margin="40,28,40,28" />
-                    <TextBox x:Name="textBoxMass6" Grid.Column="7" Grid.Row="6" Margin="40,28,40,28" />
-                </Grid>
-            </DockPanel>
-        </TabItem>
-    </TabControl>
+    <DockPanel>
+        <Grid Background="#FFF0F0F0" DockPanel.Dock="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="applyButton" Content="Apply" Grid.Column="0" Click="applyButton_Click"/>
+            <Button x:Name="okButton" Content="OK" Grid.Column="1" Click="okButton_Click"/>
+            <Button x:Name="cancelButton" Content="Cancel" Grid.Column="2" Click="cancelButton_Click"/>
+        </Grid>
+        <TabControl>
+            <TabItem Header="Universe">
+                <DockPanel>
+                    <Grid Background="#FFF0F0F0" DockPanel.Dock="Top">
+                        <Label Content="Below you can modify variables that affect the behavior of the whole Universe."/>
+                    </Grid>
+                    <Canvas Background="#FFF0F0F0">
+                        <Label Content="Time Step:" Canvas.Left="47" Canvas.Top="10" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBox x:Name="timeStepTextBox" Canvas.Left="130" TextWrapping="Wrap" Canvas.Top="14" Width="120"  HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <Label Content="Friction Constant:" Canvas.Left="10" Canvas.Top="52"/>
+                        <TextBox x:Name="frictionTextBox" Canvas.Left="130" TextWrapping="Wrap" Canvas.Top="56" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                        <Label Content="Force Equation:" Canvas.Left="20" Canvas.Top="97" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="interactionForceComboBox" Canvas.Left="130" Canvas.Top="99" Width="120">
+                            <ComboBoxItem Content="Electrostatic"/>
+                            <ComboBoxItem Content="Linear1"/>
+                            <ComboBoxItem Content="Linear2"/>
+                        </ComboBox>
+                        <StackPanel Height="326" Width="467" Canvas.Left="61" Canvas.Top="147" HorizontalAlignment="Left" VerticalAlignment="Top">
+                            <StackPanel.Background>
+                                <ImageBrush ImageSource="/forces.png"/>
+                            </StackPanel.Background>
+                        </StackPanel>
+                    </Canvas>
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="Particles">
+                <DockPanel>
+                    <Grid Background="#FFF0F0F0" DockPanel.Dock="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="18*"/>
+                            <ColumnDefinition Width="8*"/>
+                            <ColumnDefinition Width="11*"/>
+                            <ColumnDefinition Width="557*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Below you can modify the coefficients with which particles affect each other and their masses." Grid.ColumnSpan="4"/>
+                    </Grid>
+                    <Grid Background="#FFF0F0F0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Ellipse Width="40" Height="40" Grid.Column="1" Grid.Row="0">
+                            <Ellipse.Fill>
+                                <RadialGradientBrush>
+                                    <GradientStop Color="Black" Offset="1"/>
+                                    <GradientStop Color="White" Offset="0.058"/>
+                                    <GradientStop Color="Red" Offset="0.467"/>
+                                </RadialGradientBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <Ellipse Width="40" Height="40" Grid.Column="2" Grid.Row="0">
+                            <Ellipse.Fill>
+                                <RadialGradientBrush>
+                                    <GradientStop Color="Black" Offset="1"/>
+                                    <GradientStop Color="White" Offset="0.058"/>
+                                    <GradientStop Color="Blue" Offset="0.467"/>
+                                </RadialGradientBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <Ellipse Width="40" Height="40" Grid.Column="3" Grid.Row="0">
+                            <Ellipse.Fill>
+                                <RadialGradientBrush>
+                                    <GradientStop Color="Black" Offset="1"/>
+                                    <GradientStop Color="White" Offset="0.058"/>
+                                    <GradientStop Color="Green" Offset="0.467"/>
+                                </RadialGradientBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <Ellipse Width="40" Height="40" Grid.Column="4" Grid.Row="0">
+                            <Ellipse.Fill>
+                                <RadialGradientBrush>
+                                    <GradientStop Color="Black" Offset="1"/>
+                                    <GradientStop Color="White" Offset="0.058"/>
+                                    <GradientStop Color="Yellow" Offset="0.467"/>
+                                </RadialGradientBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <Ellipse Width="40" Height="40" Grid.Column="5" Grid.Row="0">
+                            <Ellipse.Fill>
+                                <RadialGradientBrush>
+                                    <GradientStop Color="Black" Offset="1"/>
+                                    <GradientStop Color="White" Offset="0.058"/>
+                                    <GradientStop Color="Purple" Offset="0.467"/>
+                                </RadialGradientBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <Ellipse Width="40" Height="40" Grid.Column="6" Grid.Row="0">
+                            <Ellipse.Fill>
+                                <RadialGradientBrush>
+                                    <GradientStop Color="Black" Offset="1"/>
+                                    <GradientStop Color="White" Offset="0.058"/>
+                                    <GradientStop Color="Gray" Offset="0.467"/>
+                                </RadialGradientBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <Ellipse Width="40" Height="40" Grid.Column="0" Grid.Row="1">
+                            <Ellipse.Fill>
+                                <RadialGradientBrush>
+                                    <GradientStop Color="Black" Offset="1"/>
+                                    <GradientStop Color="White" Offset="0.058"/>
+                                    <GradientStop Color="Red" Offset="0.467"/>
+                                </RadialGradientBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <Ellipse Width="40" Height="40" Grid.Column="0" Grid.Row="2">
+                            <Ellipse.Fill>
+                                <RadialGradientBrush>
+                                    <GradientStop Color="Black" Offset="1"/>
+                                    <GradientStop Color="White" Offset="0.058"/>
+                                    <GradientStop Color="Blue" Offset="0.467"/>
+                                </RadialGradientBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <Ellipse Width="40" Height="40" Grid.Column="0" Grid.Row="3">
+                            <Ellipse.Fill>
+                                <RadialGradientBrush>
+                                    <GradientStop Color="Black" Offset="1"/>
+                                    <GradientStop Color="White" Offset="0.058"/>
+                                    <GradientStop Color="Green" Offset="0.467"/>
+                                </RadialGradientBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <Ellipse Width="40" Height="40" Grid.Column="0" Grid.Row="4">
+                            <Ellipse.Fill>
+                                <RadialGradientBrush>
+                                    <GradientStop Color="Black" Offset="1"/>
+                                    <GradientStop Color="White" Offset="0.058"/>
+                                    <GradientStop Color="Yellow" Offset="0.467"/>
+                                </RadialGradientBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <Ellipse Width="40" Height="40" Grid.Column="0" Grid.Row="5">
+                            <Ellipse.Fill>
+                                <RadialGradientBrush>
+                                    <GradientStop Color="Black" Offset="1"/>
+                                    <GradientStop Color="White" Offset="0.058"/>
+                                    <GradientStop Color="Purple" Offset="0.467"/>
+                                </RadialGradientBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <Ellipse Width="40" Height="40" Grid.Column="0" Grid.Row="6">
+                            <Ellipse.Fill>
+                                <RadialGradientBrush>
+                                    <GradientStop Color="Black" Offset="1"/>
+                                    <GradientStop Color="White" Offset="0.058"/>
+                                    <GradientStop Color="Gray" Offset="0.467"/>
+                                </RadialGradientBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <TextBox x:Name="textBox11" Grid.Column="1" Grid.Row="1" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox21" Grid.Column="2" Grid.Row="1" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox31" Grid.Column="3" Grid.Row="1" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox41" Grid.Column="4" Grid.Row="1" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox51" Grid.Column="5" Grid.Row="1" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox61" Grid.Column="6" Grid.Row="1" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox12" Grid.Column="1" Grid.Row="2" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox22" Grid.Column="2" Grid.Row="2" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox32" Grid.Column="3" Grid.Row="2" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox42" Grid.Column="4" Grid.Row="2" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox52" Grid.Column="5" Grid.Row="2" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox62" Grid.Column="6" Grid.Row="2" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox13" Grid.Column="1" Grid.Row="3" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox23" Grid.Column="2" Grid.Row="3" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox33" Grid.Column="3" Grid.Row="3" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox43" Grid.Column="4" Grid.Row="3" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox53" Grid.Column="5" Grid.Row="3" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox63" Grid.Column="6" Grid.Row="3" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox14" Grid.Column="1" Grid.Row="4" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox24" Grid.Column="2" Grid.Row="4" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox34" Grid.Column="3" Grid.Row="4" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox44" Grid.Column="4" Grid.Row="4" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox54" Grid.Column="5" Grid.Row="4" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox64" Grid.Column="6" Grid.Row="4" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox15" Grid.Column="1" Grid.Row="5" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox25" Grid.Column="2" Grid.Row="5" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox35" Grid.Column="3" Grid.Row="5" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox45" Grid.Column="4" Grid.Row="5" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox55" Grid.Column="5" Grid.Row="5" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox65" Grid.Column="6" Grid.Row="5" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox16" Grid.Column="1" Grid.Row="6" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox26" Grid.Column="2" Grid.Row="6" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox36" Grid.Column="3" Grid.Row="6" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox46" Grid.Column="4" Grid.Row="6" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox56" Grid.Column="5" Grid.Row="6" Margin="10,28,10,28" />
+                        <TextBox x:Name="textBox66" Grid.Column="6" Grid.Row="6" Margin="10,28,10,28" />
+                        <Label Content="Affecting->;" HorizontalAlignment="Center" VerticalAlignment="Top" Width="70" Margin="0,12,0,0" />
+                        <Label Content="Affected" HorizontalAlignment="Right" Margin="0,32,16,0" VerticalAlignment="Top" Width="55"/>
+                        <Label Content="->" HorizontalAlignment="Left" Margin="45,32,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+                            <Label.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="91.44"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Label.RenderTransform>
+                        </Label>
+                        <Label Grid.Column="7" Content="Mass" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBox x:Name="textBoxMass1" Grid.Column="7" Grid.Row="1" Margin="40,28,40,28" />
+                        <TextBox x:Name="textBoxMass2" Grid.Column="7" Grid.Row="2" Margin="40,28,40,28" />
+                        <TextBox x:Name="textBoxMass3" Grid.Column="7" Grid.Row="3" Margin="40,28,40,28" />
+                        <TextBox x:Name="textBoxMass4" Grid.Column="7" Grid.Row="4" Margin="40,28,40,28" />
+                        <TextBox x:Name="textBoxMass5" Grid.Column="7" Grid.Row="5" Margin="40,28,40,28" />
+                        <TextBox x:Name="textBoxMass6" Grid.Column="7" Grid.Row="6" Margin="40,28,40,28" />
+                    </Grid>
+                </DockPanel>
+            </TabItem>
+        </TabControl>
+    </DockPanel>
 </Window> 

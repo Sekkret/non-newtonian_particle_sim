@@ -34,16 +34,18 @@ namespace projekt_kulki
             foreach (var particle in Particles)
             {
                 // avoid errors of molecular dynamics -- The Great Slow Down
-                if(particle.Velocity.Length() > 1000)
+                if(particle.Velocity.Length() > 50)
                 {
-                    particle.Velocity = new Vector2(particle.Velocity.X / 100, particle.Velocity.Y / 100);
+                    particle.Velocity = new Vector2(particle.Velocity.X / 1000, particle.Velocity.Y / 1000);
                 }
                 Vector2 totalForce = Vector2.Zero;
                 foreach(var particle2 in Particles)
                 {
                     if (particle != particle2)
                     {
-                        totalForce = Vector2.Add(  totalForce, Force.Ionic_Safe( particle.GetPosition(), particle2.GetPosition(), UniverseProperties.getCoefficient(particle.particleType, particle2.particleType) )  );
+                        double coeff = UniverseProperties.getCoefficient(particle.particleType, particle2.particleType);
+                        totalForce = Vector2.Add(  totalForce, UniverseProperties.interactionForce( particle.GetPosition(), particle2.GetPosition(), coeff )  );
+                        totalForce = Vector2.Add(totalForce, Force.ParticleCollisionForce(particle.GetPosition(), particle2.GetPosition(), coeff));
                     }
                 }
                 totalForce = Vector2.Add(totalForce, Force.BorderForce(particle.GetPosition(), playgroundCanvas));
@@ -72,6 +74,11 @@ namespace projekt_kulki
                 playgroundCanvas.Children.Remove(particleToRemove);
             }
             particlesToRemove.Clear();
+        }
+
+        private void CollisionOfParticles()
+        {
+
         }
 
         public void RemoveParticle(Particle clickedParticle)

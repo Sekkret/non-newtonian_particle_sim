@@ -36,10 +36,10 @@ namespace projekt_kulki
             {
                 textBoxMasses[i] = (TextBox)FindName($"textBoxMass{i + 1}");
             }
-            DownloadCoefficients();
+            DownloadParameters();
         }
 
-        private void DownloadCoefficients()
+        private void DownloadParameters()
         {
             
             for(int i=0; i<6; i++)
@@ -50,9 +50,12 @@ namespace projekt_kulki
                 }
                 textBoxMasses[i].Text = UniverseProperties.getMass((ParticleType)i).ToString();
             }
+            timeStepTextBox.Text = UniverseProperties.timeStep.ToString();
+            frictionTextBox.Text = UniverseProperties.frictionCoefficient.ToString();
+            interactionForceComboBox.SelectedIndex = (int)UniverseProperties.interactionForceID;
         }
 
-        private void UploadCoefficiens()
+        private void UploadParameters()
         {
             for (int i = 0; i < 6; i++)
             {
@@ -62,18 +65,21 @@ namespace projekt_kulki
                 }
                 UniverseProperties.setMass((ParticleType)i, int.Parse(textBoxMasses[i].Text));
             }
+            UniverseProperties.timeStep = double.Parse(timeStepTextBox.Text);
+            UniverseProperties.frictionCoefficient = double.Parse(frictionTextBox.Text);
+            changeForce();
         }
         
 
         private void applyButton_Click(object sender, RoutedEventArgs e)
         {
-            UploadCoefficiens();
-            UniverseProperties.Reload();
+            UploadParameters();
+            UniverseProperties.Reload(); 
         }
 
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
-            UploadCoefficiens();
+            UploadParameters();
             UniverseProperties.Reload();
             this.Close();
         }
@@ -83,5 +89,27 @@ namespace projekt_kulki
             this.Close();
         }
 
+        private void changeForce()
+        {
+            switch (interactionForceComboBox.SelectedIndex)
+            {
+                case (int)InteractionForce.Electrostatic:
+                    UniverseProperties.interactionForce = Force.Electrostatic;
+                    UniverseProperties.interactionForceID = InteractionForce.Electrostatic;
+                    break;
+                case (int)InteractionForce.Linear1:
+                    UniverseProperties.interactionForce = Force.Linear1;
+                    UniverseProperties.interactionForceID = InteractionForce.Linear1;
+                    break;
+                case (int)InteractionForce.Linear2:
+                    UniverseProperties.interactionForce = Force.Linear2;
+                    UniverseProperties.interactionForceID = InteractionForce.Linear2;
+                    break;
+                default:
+                    UniverseProperties.interactionForce = Force.Electrostatic;
+                    UniverseProperties.interactionForceID = InteractionForce.Electrostatic;
+                    break;
+            }
+        }
     }
 }

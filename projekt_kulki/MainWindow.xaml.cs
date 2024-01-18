@@ -63,23 +63,32 @@ namespace projekt_kulki
         // next two functions manages the choice of function
         private void toolButtonChecked(object sender, RoutedEventArgs e)
         {
-            string tag = (string)((ToggleButton)sender).Tag;
+            string tag = (string)((Control)sender).Tag;
             if (tag == "addParticle")
             {
                 this.removeParticleButton.IsChecked = false;
                 this.moveParticleButton.IsChecked = false;
+                addMenuItem.IsChecked = true;
+                removeMenuItem.IsChecked = false;
+                moveMenuItem.IsChecked = false;
                 this.chosenTool = ChosenTool.AddParticle;
             }
             if (tag == "removeParticle")
             {
                 this.addParticleButton.IsChecked = false;
                 this.moveParticleButton.IsChecked = false;
+                addMenuItem.IsChecked = false;
+                removeMenuItem.IsChecked = true;
+                moveMenuItem.IsChecked = false;
                 this.chosenTool = ChosenTool.RemoveParticle;
             }
             if (tag == "moveParticle")
             {
                 this.addParticleButton.IsChecked = false;
                 this.removeParticleButton.IsChecked = false;
+                addMenuItem.IsChecked = false;
+                removeMenuItem.IsChecked = false;
+                moveMenuItem.IsChecked = true;
                 this.chosenTool = ChosenTool.MoveParticle;
             }
         }
@@ -98,14 +107,27 @@ namespace projekt_kulki
             {
                 if (sender is Canvas playgroundCanvas)
                 {
+                    bool isPlaced = true;
                     Point position = e.GetPosition(playgroundCanvas);
                     position.X -= Particle.radius;
                     position.Y -= Particle.radius;
-                    Particle particle = new Particle(position , Vector2.Zero, chosenParticle);
-                    playgroundCanvas.Children.Add(particle);
-                    particle.MouseLeftButtonDown += new System.Windows.Input.MouseButtonEventHandler(this.particle_MouseLeftButtonDown);
-                    particle.PreviewMouseLeftButtonDown += new System.Windows.Input.MouseButtonEventHandler(this.particle_PreviewMouseLeftButtonDown);
-                    particleManager.AddParticle(particle);
+                    foreach (Particle existingParticle in particleManager.Particles)
+                    {
+                        Point existingPosition = existingParticle.GetPosition();
+                        double dist = Math.Sqrt(Math.Pow((position.X - existingPosition.X), 2) + Math.Pow((position.Y - existingPosition.Y), 2));
+                        if(dist < 1.5 * Particle.radius)
+                        {
+                            isPlaced = false;
+                        }
+                    }
+                    if (isPlaced)
+                    {
+                        Particle particle = new Particle(position, Vector2.Zero, chosenParticle);
+                        playgroundCanvas.Children.Add(particle);
+                        particle.MouseLeftButtonDown += new System.Windows.Input.MouseButtonEventHandler(this.particle_MouseLeftButtonDown);
+                        particle.PreviewMouseLeftButtonDown += new System.Windows.Input.MouseButtonEventHandler(this.particle_PreviewMouseLeftButtonDown);
+                        particleManager.AddParticle(particle);
+                    }
                 }
             }
 
@@ -215,11 +237,51 @@ namespace projekt_kulki
                 particleManager.RemoveAllParticles();
             }
         }
-
+        
+        //Menu Items are handled here.
         private void settingsMenuItem_Click(object sender, RoutedEventArgs e)
         {
             SettingsWindow settingsWindow = new SettingsWindow();
             settingsWindow.Show();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            AboutWindow aboutWindow = new AboutWindow();
+            aboutWindow.Show();
+        }
+
+        private void Add_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            addParticleButton.IsChecked = true;
+            removeParticleButton.IsChecked = false;
+            moveParticleButton.IsChecked = false;
+            addMenuItem.IsChecked = true;
+            removeMenuItem.IsChecked = false;
+            moveMenuItem.IsChecked = false;
+        }
+        private void Remove_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            addParticleButton.IsChecked = false;
+            removeParticleButton.IsChecked = true;
+            moveParticleButton.IsChecked = false;
+            addMenuItem.IsChecked = false;
+            removeMenuItem.IsChecked = true;
+            moveMenuItem.IsChecked = false;
+        }
+        private void Move_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            addParticleButton.IsChecked = false;
+            removeParticleButton.IsChecked = false;
+            moveParticleButton.IsChecked = true;
+            addMenuItem.IsChecked = false;
+            removeMenuItem.IsChecked = false;
+            moveMenuItem.IsChecked = true;
+        }
+
+        private void ChooseParticleMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            chooseParticleButton_Click(chooseParticleButton, e);
         }
     }
 }

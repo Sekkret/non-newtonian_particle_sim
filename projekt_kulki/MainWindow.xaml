@@ -11,8 +11,17 @@
             <MenuItem Header="Simulation">
                 <MenuItem x:Name="settingsMenuItem" Header="Settings" Click="settingsMenuItem_Click"/>
             </MenuItem>
-            <MenuItem Header="Tools"/>
-            <MenuItem Header="Help"/>
+            <MenuItem Header="Tools">
+                <MenuItem x:Name="addMenuItem" Header="Add particle" Click="Add_MenuItem_Click"/>
+                <MenuItem x:Name="removeMenuItem" Header="Remove particle" Click="Remove_MenuItem_Click"/>
+                <MenuItem x:Name="moveMenuItem" Header="Drag Particle" Click="Move_MenuItem_Click"/>
+                <MenuItem Header="Clear The Universe" Click="ChooseParticleMenuItem_Click" />
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="About" Click="MenuItem_Click"/>
+                <MenuItem Header="Manual"/>
+                <MenuItem Header="Licence"/>
+            </MenuItem>
         </Menu>
         <ToolBarTray DockPanel.Dock="Right" Width="60" Orientation="Vertical" >
             <ToolBar Foreground="#FFF0F0F0">

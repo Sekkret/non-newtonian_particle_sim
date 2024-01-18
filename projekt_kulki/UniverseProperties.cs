@@ -5,12 +5,18 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Documents;
+using System.Windows;
+using System.Numerics;
 using System.Windows.Media.Effects;
 
 namespace projekt_kulki
 {
     class UniverseProperties
     {
+        //chosen force
+        public static Func<Point, Point, double, Vector2>? interactionForce = Force.Electrostatic;
+        public static InteractionForce interactionForceID = InteractionForce.Electrostatic;
+
         private static double[] mass = new double[6];
         // first index is particle affected, the second one is affecting
         private static double[,] coefficients_matrix = new double[6, 6];
@@ -19,14 +25,10 @@ namespace projekt_kulki
 
         public static double frictionCoefficient {get; set;}
         public static double timeStep { get; set;}
-        
-
-        public UniverseProperties()
-        {
-        }
 
         public static void Load()
         {
+
             //simple coefficients
             frictionCoefficient = 0.01;
             timeStep = 0.1;
