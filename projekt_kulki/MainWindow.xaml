@@ -18,9 +18,9 @@
                 <MenuItem Header="Clear The Universe" Click="ChooseParticleMenuItem_Click" />
             </MenuItem>
             <MenuItem Header="Help">
-                <MenuItem Header="About" Click="MenuItem_Click"/>
-                <MenuItem Header="Manual"/>
-                <MenuItem Header="Licence"/>
+                <MenuItem x:Name="aboutMenuItem" Header="About" Click="aboutMenuItem_Click"/>
+                <MenuItem x:Name="manualMenuItem"  Header="Manual" Click="manualMenuItem_Click"/>
+                <MenuItem x:Name="licenceMenuItem" Header="Licence" Click="licenceMenuItem_Click"/>
             </MenuItem>
         </Menu>
         <ToolBarTray DockPanel.Dock="Right" Width="60" Orientation="Vertical" >

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Numerics;
 using System.Reflection.PortableExecutable;
@@ -247,8 +249,7 @@ namespace projekt_kulki
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            AboutWindow aboutWindow = new AboutWindow();
-            aboutWindow.Show();
+
         }
 
         private void Add_MenuItem_Click(object sender, RoutedEventArgs e)
@@ -282,6 +283,73 @@ namespace projekt_kulki
         private void ChooseParticleMenuItem_Click(object sender, RoutedEventArgs e)
         {
             chooseParticleButton_Click(chooseParticleButton, e);
+        }
+
+        private void aboutMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            AboutWindow aboutWindow = new AboutWindow();
+            aboutWindow.Show();
+        }
+
+        private void licenceMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // Specify the URL of the website you want to open
+                string websiteUrl = "https://creativecommons.org/licenses/by-sa/4.0/";
+
+                // Open the default web browser with the specified URL
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = websiteUrl,
+                    UseShellExecute = true
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void manualMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // Specify the path to your custom HTML document
+                string htmlFilePath = "C:\\Users\\baurb\\Desktop\\Bartlomiej_Baur\\projekt_kulki\\projekt_kulki\\manual.html";
+
+                // Check if the file exists
+                if (File.Exists(htmlFilePath))
+                {
+                    // Create a new window to display the HTML content
+                    Window htmlWindow = new Window
+                    {
+                        Title = "Particle Sim Manual",
+                        Width = 800,
+                        Height = 600
+                    };
+
+                    // Create a WebBrowser control to display the HTML content
+                    WebBrowser webBrowser = new WebBrowser();
+
+                    // Set the source of the WebBrowser to the HTML file
+                    webBrowser.Navigate(new Uri(htmlFilePath));
+
+                    // Add the WebBrowser control to the window
+                    htmlWindow.Content = webBrowser;
+
+                    // Show the window
+                    htmlWindow.Show();
+                }
+                else
+                {
+                    MessageBox.Show("The specified HTML file does not exist.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

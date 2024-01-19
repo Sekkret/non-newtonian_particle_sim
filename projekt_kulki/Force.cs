@@ -21,12 +21,25 @@ namespace projekt_kulki
     { 
         public static Vector2 Electrostatic(Point position, Point position2, double coefficient)
         {
-            double A = 10 * coefficient;
             Vector2 r_i = new((float)position2.X - (float)position.X, (float)position2.Y - (float)position.Y);
 
+            // electrostatic force:
+            double A = 10 * coefficient;
             double F_i = A / r_i.LengthSquared();
-            F_i /= r_i.Length();
-            return Vector2.Multiply(r_i, (float)F_i);
+            Vector2 F_e = Vector2.Multiply((float)F_i / r_i.Length(), r_i);
+
+            // particle-particl collision repulsion:
+            float rel_dist = r_i.Length() - 2 * Particle.radius;
+            Vector2 F_r = Vector2.Zero;
+            if (rel_dist < 0)
+            {
+                float B = (float)0.0001 * (float)Math.Abs(coefficient);
+                F_i = B * (float)Math.Pow(rel_dist, 4);
+                F_r = Vector2.Multiply(-(float)F_i / r_i.Length(), r_i);
+            }
+
+            //result is the sum of both forces:
+            return Vector2.Add(F_e, F_r);
         }
 
         public static Vector2 Linear1(Point position, Point position2, double coefficient)
@@ -40,7 +53,7 @@ namespace projekt_kulki
             double force_abs;
             if (dist < diameter)
             {
-                force_abs = 0;
+                force_abs = - 5000 * Math.Abs(B) / Math.Pow(dist, 2);
             }
             else if(dist < x_0)
             {
@@ -68,7 +81,7 @@ namespace projekt_kulki
             double force_abs;
             if (dist <= diameter)
             {
-                force_abs = 0;
+                force_abs = -5000 * Math.Abs(B) / Math.Pow(dist, 2); ;
             }
             else if (dist < x1)
             {
@@ -89,22 +102,6 @@ namespace projekt_kulki
             return Vector2.Multiply((float)(force_abs/dist), r_i);
         }
 
-        public static Vector2 ParticleCollisionForce(Point pos, Point pos2, double coefficient)
-        {
-            Vector2 r_i = new((float)pos2.X - (float)pos.X, (float)pos2.Y - (float)pos.Y);
-            float rel_dist = r_i.Length() - 2*Particle.radius;
-            if (rel_dist > 0)
-            {
-                return Vector2.Zero;
-            }
-            else
-            {
-                float A = (float) 0.0001 * (float) coefficient;
-                float F_i = A * (float) Math.Pow(rel_dist, 4);
-                
-                return Vector2.Multiply(F_i / rel_dist, r_i);
-            }
-        }
         public static Vector2 BorderForce(Point position, Canvas canvas)
         {
             float A = (float) 0.005;

@@ -45,7 +45,6 @@ namespace projekt_kulki
                     {
                         double coeff = UniverseProperties.getCoefficient(particle.particleType, particle2.particleType);
                         totalForce = Vector2.Add(  totalForce, UniverseProperties.interactionForce( particle.GetPosition(), particle2.GetPosition(), coeff )  );
-                        totalForce = Vector2.Add(totalForce, Force.ParticleCollisionForce(particle.GetPosition(), particle2.GetPosition(), coeff));
                     }
                 }
                 totalForce = Vector2.Add(totalForce, Force.BorderForce(particle.GetPosition(), playgroundCanvas));
@@ -76,10 +75,6 @@ namespace projekt_kulki
             particlesToRemove.Clear();
         }
 
-        private void CollisionOfParticles()
-        {
-
-        }
 
         public void RemoveParticle(Particle clickedParticle)
         {
